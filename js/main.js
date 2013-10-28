@@ -9,5 +9,9 @@ sampleSVG.append("circle")
     .attr("r", 40)
     .attr("cx", 50)
     .attr("cy", 50)
-    .on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
-    .on("mouseout", function(){d3.select(this).style("fill", "white");});
+  .transition()
+    .delay(100)
+    .duration(1000)    
+    .attr("r", 10)
+    .attr("cx", 30)
+    .style("fill", "black");
