@@ -40,6 +40,7 @@ function animateSecondStep(){
         .attr("r", 40);
 };
 
+
 dataset = [];
 for (i = 0; i < 5; i++) {
     for (j = 0, tmpDataset = []; j < 3; j++) {
@@ -66,3 +67,28 @@ d3.select("#viz-2")
     .on("mouseout", function(){d3.select(this).style("background-color", "white")}) 
     .text(function(d){return d;})
     .style("font-size", "12px");
+
+
+d3.text("auto_mpg_tmp.csv", function(datasetText) {
+
+var parsedCSV = d3.csv.parseRows(datasetText);
+
+var sampleHTML = d3.select("#viz-3")
+    .append("table")
+    .style("border-collapse", "collapse")
+    .style("border", "2px black solid")
+
+    .selectAll("tr")
+    .data(parsedCSV)
+    .enter().append("tr")
+
+    .selectAll("td")
+    .data(function(d){return d;})
+    .enter().append("td")
+    .style("border", "1px black solid")
+    .style("padding", "5px")
+    .on("mouseover", function(){d3.select(this).style("background-color", "aliceblue")})
+    .on("mouseout", function(){d3.select(this).style("background-color", "white")})
+    .text(function(d){return d;})
+    .style("font-size", "12px");
+});    
